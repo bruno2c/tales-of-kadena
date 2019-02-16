@@ -12,20 +12,16 @@
 
         <div class="stage">
                 <div>
-                        <div class="enemy-slot01">
-                                <div class="health-bar"></div>
-                                <div class="enemy001"></div>
-                        </div>
-
-                        <div class="enemy-slot02">
-                                <div class="health-bar"></div>
-                                <div class="enemy001a"></div>
-                        </div>
-
-                        <div class="enemy-slot03">
-                                <div class="health-bar"></div>
-                                <div class="enemy001b"></div>
-                        </div>
+                        {% for enemy in enemies %}
+                                <div class="enemy-slot{{ loop.index	 }}">
+                                        <div class="health-bar">
+                                                <div class="current">&nbsp;</div>
+                                                <div class="border">&nbsp;</div>
+                                                <span class="text">{{ enemy.getHealth }} / {{ enemy.getHealth }}</span>
+                                        </div>
+                                        <div class="{{ enemy.getSpritePath }}"></div>
+                                </div>
+                        {% endfor %}
                 </div>
         </div>
 
