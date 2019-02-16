@@ -1,0 +1,30 @@
+
+.health-bar {
+    float: left;
+    border: 3px solid;
+    width: 200px;
+    height: 10px;
+    border-radius: 10px;
+    margin-left: 28%;
+    margin-top: 100px;
+}
+
+.enemy-slot01 {
+    float:left;
+    height: 0;
+    margin-left: 70%;
+}
+
+.enemy-slot02 {
+    height: 0;
+    float:left;
+    margin-left: 55%;
+    margin-top: 240px;
+}
+
+.enemy-slot03 {
+    float:left;
+    height: 0;
+    margin-left: 70%;
+    margin-top: 230px;
+}

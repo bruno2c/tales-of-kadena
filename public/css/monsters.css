@@ -1,0 +1,31 @@
+
+.enemy001 {
+    width: 480px;
+    height: 480px;
+    background: url("../images/monsters/pipo-enemy001.png") no-repeat;
+}
+.enemy001a {
+    width: 480px;
+    height: 480px;
+    background: url("../images/monsters/pipo-enemy001a.png") no-repeat;
+}
+.enemy001b {
+    width: 480px;
+    height: 480px;
+    background: url("../images/monsters/pipo-enemy001b.png") no-repeat;
+}
+.enemy002 {
+    width: 480px;
+    height: 480px;
+    background: url("../images/monsters/pipo-enemy002.png") no-repeat;
+}
+.enemy002a {
+    width: 480px;
+    height: 480px;
+    background: url("../images/monsters/pipo-enemy002a.png") no-repeat;
+}
+.enemy002b {
+    width: 480px;
+    height: 480px;
+    background: url("../images/monsters/pipo-enemy002b.png") no-repeat;
+}
