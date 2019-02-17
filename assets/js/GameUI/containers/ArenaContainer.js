@@ -1,12 +1,18 @@
 import { connect } from 'react-redux'
+import {loadStage} from '../actions/arena'
 import Arena from '../components/Arena'
 
 const mapStateToProps = (state, ownProps) => {
-    return {}
+
+    return {
+        arena: state.arena
+    }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return {}
+    return {
+        loadStage: dispatch(loadStage())
+    }
 }
 
 const ArenaContainer = connect(

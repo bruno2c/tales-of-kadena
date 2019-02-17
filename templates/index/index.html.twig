@@ -10,20 +10,7 @@
 
 {% block body %}
 
-        <div id="game" class="stage">
-                <div>
-                        {% for enemy in enemies %}
-                                <div class="enemy-slot{{ loop.index	 }}">
-                                        <div class="health-bar">
-                                                <div class="current">&nbsp;</div>
-                                                <div class="border">&nbsp;</div>
-                                                <span class="text">{{ enemy.getHealth }} / {{ enemy.getHealth }}</span>
-                                        </div>
-                                        <div class="{{ enemy.getSpritePath }}"></div>
-                                </div>
-                        {% endfor %}
-                </div>
-        </div>
+        <div id="game" class="stage"></div>
 
 {% endblock %}
 

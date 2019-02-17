@@ -1,8 +1,11 @@
 import React from 'react'
+import EnemyContainer from "../containers/EnemyContainer";
 
-const Arena = () => (
+const Arena = ({ arena }) => (
     <div>
-test
+        {Object.keys(arena.enemies).map(key => (
+            <EnemyContainer key={key} enemy={arena.enemies[key]} />
+        ))}
     </div>
 )
 

@@ -1,3 +1,7 @@
 index:
     path: /
     controller: App\Controller\IndexController::index
+
+stage_enemies:
+    path: /stage/{stageId}/enemies
+    controller: App\Controller\StageController::enemies

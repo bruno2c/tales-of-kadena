@@ -7,14 +7,15 @@ Encore
     // empty the outputPath dir before each build
     .cleanupOutputBeforeBuild()
 
-    // will output as app/Resources/webpack/server-bundle.js
+    // .createSharedEntry('vendor', 'babel-polyfill')
     .addEntry('game','./assets/js/GameUI/index.js')
     // Add react preset
     .enableReactPreset()
+    // .enableSingleRuntimeChunk()
     .configureBabel(function (babelConfig) {
         // add additional presets
-        // babelConfig.presets.push('es2015');
-        // babelConfig.presets.push('stage-0');
+        // babelConfig.presets.push('es2015')
+        babelConfig.plugins.push('@babel/transform-runtime');
 // no plugins are added by default, but you can add some
         // babelConfig.plugins.push('styled-jsx/babel');
     })
