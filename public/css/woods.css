@@ -1,9 +1,15 @@
-body { margin: 0; }
+
+@font-face {
+    font-family: 'Grobold';
+    src: url('GROBOLD.ttf') format('truetype');
+}
+
+body { margin: 0; font-family: Grobold, Fallback, sans-serif; }
 
 .stage {
     padding: 0;
     margin: 0;
-    min-height: 945px;
+    min-height: 950px;
     max-height: 1080px;
     background: url("../images/woods/background.png") no-repeat;
 }

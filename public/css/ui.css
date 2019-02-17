@@ -2,9 +2,9 @@
 .health-bar {
     float: left;
     width: 200px;
-    height: 22px;
+    height: 20px;
     margin-left: 28%;
-    margin-top: 100px;
+    margin-top: 50px;
     border-radius: 10px;
     background: white;
 }
@@ -13,7 +13,6 @@
     border-radius: 10px;
     border: 3px solid;
     margin-top: -22px;
-    /*z-index: 999;*/
 }
 
 .health-bar .current {
@@ -21,14 +20,15 @@
     width: 88%;
     height: 20px;
     margin-top: 1px;
-    margin-left: 3px;
-    border-radius: 0px;
+    margin-left: 2px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
 }
 
 .health-bar .text{
     float:left;
     margin-left: 42%;
-    margin-top: -21px;
+    margin-top: -18px;
 }
 
 .enemy-slot1 {
@@ -41,12 +41,139 @@
     height: 0;
     float:left;
     margin-left: 55%;
-    margin-top: 240px;
+    margin-top: 170px;
 }
 
 .enemy-slot3 {
     float:left;
     height: 0;
     margin-left: 70%;
-    margin-top: 230px;
+    margin-top: 170px;
+}
+
+.arena {
+    height: 700px;
+}
+
+.ui-bar {
+    float:left;
+    width: 98%;
+    margin-left: 1%;
+    height: 240px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: url("../images/ui/ui-bar-2x.png") repeat;
+}
+
+.ui-bar .champions {
+    float: left;
+    width: 22%;
+    height: 210px;
+    margin-left: 1%;
+    margin-top: 15px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    -moz-border-radius-topleft: 10px;
+    background: url("../images/ui/ui-bar-blocks2.png") repeat;
+}
+
+.ui-bar .actions {
+    float: left;
+    width: 54%;
+    height: 210px;
+    margin-top: 15px;
+    background: url("../images/ui/ui-bar-blocks2.png") repeat;
+}
+
+.ui-bar .actions .general {
+    float: left;
+    width: 20%;
+    font-size: 25px;
+    margin-top: 15px;
+    height: 175px;
+}
+
+.ui-bar .actions .general .option {
+    margin: 15px 0 0 60px;
+}
+
+.ui-bar .actions .spells {
+    float: left;
+    width: 60%;
+    font-size: 20px;
+    margin-top: 15px;
+    height: 175px;
+}
+
+.ui-bar .actions .spells .option {
+    margin: 15px 0 0 40px;
+}
+
+.arrow-option {
+    display: block;
+    float:left;
+    width: 50px;
+    height: 47px;
+    background: url("../images/ui/icons/Asset 47flat_.png") no-repeat;
+}
+
+.ui-bar .actions .general .option1 {
+    margin-top: 5px!important;
+}
+
+.ui-bar .actions .general .option2 {
+    margin-top: 42px!important;
+}
+
+.ui-bar .actions .general .option3 {
+    margin-top: 82px!important;
+}
+
+.ui-bar .enemies {
+    float: left;
+    width: 22%;
+    height: 210px;
+    margin-top: 15px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -moz-border-radius-topright: 10px;
+    background: url("../images/ui/ui-bar-blocks2.png") repeat;
+}
+
+.ui-bar .slot {
+    float: left;
+    width: 88%;
+    height: 60px;
+    margin-top: 7px;
+    margin-left: 20%;
+}
+
+.ui-bar .slot .charPicture {
+    float: left;
+    border: 2px solid;
+    width: 50px;
+    height: 50px;
+    margin-top: 3px;
+}
+
+.ui-bar .slot .name {
+    float: left;
+    width: 80%;
+    font-size: 20px;
+    height: 10px;
+    margin-top: 5px;
+    margin-left: 8px;
+}
+
+.ui-bar .slot .health-bar {
+    float: left;
+    margin-top: 15px;
+    margin-left: 5px;
 }
