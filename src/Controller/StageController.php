@@ -11,11 +11,11 @@ class StageController extends AbstractController
 {
     public function enemies($stageId)
     {
-        $monsterRepository = $this->getDoctrine()->getRepository(Monster::class);
-
-        $prepareStage = new PrepareStage($monsterRepository);
-        $enemies = $prepareStage->getEnemies();
-
-        return new JsonResponse($enemies);
+//        $monsterRepository = $this->getDoctrine()->getRepository(Monster::class);
+//
+//        $prepareStage = new PrepareStage($monsterReposi?tory);
+////        $enemies = $prepareStage->getRandomEnemies();
+//
+//        return new JsonResponse($enemies);
     }
 }

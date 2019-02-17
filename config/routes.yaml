@@ -2,6 +2,14 @@ index:
     path: /
     controller: App\Controller\IndexController::index
 
+campaign_new:
+    path: /campaign/new
+    controller: App\Controller\GameController::newCampaign
+
+battle_new:
+    path: /campaign/{campaignId}/battle/new
+    controller: App\Controller\GameController::newBattle
+
 stage_enemies:
     path: /stage/{stageId}/enemies
     controller: App\Controller\StageController::enemies

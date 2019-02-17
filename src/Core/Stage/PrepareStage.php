@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: bruno
- * Date: 17/02/19
- * Time: 12:11
- */
 
 namespace App\Core\Stage;
 
@@ -20,22 +14,32 @@ class PrepareStage
         $this->monsterRepo = $monsterRepo;
     }
 
-    public function getEnemies()
+    /**
+     * @return \App\Entity\Monster[]|array
+     */
+    public function getRandomEnemies()
     {
         $monsters = $this->monsterRepo->findAll();
         shuffle($monsters);
         $monsters = array_slice($monsters, 0, 3);
 
+        return $monsters;
+    }
+
+    public function prepareResponse($battleEnemies = [])
+    {
         $enemies = [];
 
-        foreach ($monsters as $i => $monster) {
+        foreach ($battleEnemies as $i => $battleEnemy) {
+            $monster = $battleEnemy->getMonster();
+
             $enemies[] = [
-                'id' => $monster->getId(),
+                'id' => $battleEnemy->getId(),
                 'slot' =>  $i + 1,
-                'health' => $monster->getHealth(),
+                'health' => $battleEnemy->getHealth(),
                 'sprite' => $monster->getSpritePath(),
-                'attack' => $monster->getAttack(),
-                'defense' => $monster->getDefense()
+                'attack' => $battleEnemy->getAttack(),
+                'defense' => $battleEnemy->getDefense()
             ];
         }
 
