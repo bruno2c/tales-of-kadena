@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@symfony/webpack-encore": "^0.23.0"
+  },
+  "dependencies": {
+    "babel-preset-stage-0": "^6.24.1",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-on-rails": "^11.2.2",
+    "react-redux": "^6.0.0",
+    "react-transition-group": "^2.5.3",
+    "redux": "^4.0.1"
+  }
+}

@@ -18,4 +18,8 @@
 ###< symfony/web-server-bundle ###
 
 .idea/
-
+yarn-error.log
+node_modules
+public/js/game.js
+public/js/entrypoints.json
+public/js/manifest.json

@@ -10,7 +10,7 @@
 
 {% block body %}
 
-        <div class="stage">
+        <div id="game" class="stage">
                 <div>
                         {% for enemy in enemies %}
                                 <div class="enemy-slot{{ loop.index	 }}">
@@ -25,4 +25,10 @@
                 </div>
         </div>
 
+{% endblock %}
+
+{% block javascripts %}
+        {{ parent() }}
+
+        <script src="{{ asset('js/game.js') }}" type="application/javascript"></script>
 {% endblock %}
