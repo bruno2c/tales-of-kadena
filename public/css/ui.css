@@ -134,7 +134,7 @@
     margin: 15px 0 0 60px;
 }
 
-.ui-bar .actions .spells {
+.ui-bar .actions .battle-actions {
     float: left;
     width: 60%;
     font-size: 20px;
@@ -142,7 +142,7 @@
     height: 175px;
 }
 
-.ui-bar .actions .spells .option {
+.ui-bar .actions .battle-actions .option {
     margin: 15px 0 0 40px;
 }
 
@@ -154,15 +154,15 @@
     background: url("../images/ui/icons/Asset 47flat_.png") no-repeat;
 }
 
-.ui-bar .actions .general .option1 {
+.ui-bar .actions .general .battle {
     margin-top: 5px!important;
 }
 
-.ui-bar .actions .general .option2 {
+.ui-bar .actions .general .items {
     margin-top: 42px!important;
 }
 
-.ui-bar .actions .general .option3 {
+.ui-bar .actions .general .run {
     margin-top: 82px!important;
 }
 

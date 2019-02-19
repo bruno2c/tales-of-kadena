@@ -4,13 +4,14 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import arena from './reducers/arena'
 import game from './reducers/game'
+import ui from './reducers/ui'
 import GameUI from "./GameUI";
 import { combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const gameUI = combineReducers({ game, arena })
+const gameUI = combineReducers({ game, arena, ui })
 
 const store = createStore(
     gameUI,
