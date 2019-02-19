@@ -31,23 +31,56 @@
     margin-top: -18px;
 }
 
+
+.champions-side {
+    float:left;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.enemies-side {
+    float:left;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
 .enemy-slot1 {
     float:left;
     height: 0;
-    margin-left: 70%;
+    margin-left: 50%;
 }
 
 .enemy-slot2 {
     height: 0;
     float:left;
-    margin-left: 55%;
+    margin-left: 20%;
     margin-top: 170px;
 }
 
 .enemy-slot3 {
     float:left;
     height: 0;
-    margin-left: 70%;
+    margin-left: 50%;
+    margin-top: 170px;
+}
+
+.champion-slot1 {
+    float:left;
+    height: 0;
+}
+
+.champion-slot2 {
+    height: 0;
+    float:left;
+    margin-left: 30%;
+    margin-top: 170px;
+}
+
+.champion-slot3 {
+    float:left;
+    height: 0;
     margin-top: 170px;
 }
 

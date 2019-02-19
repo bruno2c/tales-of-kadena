@@ -4,10 +4,11 @@ namespace App\Core\Game;
 
 use App\Core\Stage\PrepareStage;
 use App\Entity\Battle;
+use App\Entity\BattleChampion;
 use App\Entity\BattleEnemy;
 use App\Entity\Campaign;
-use App\Entity\Monster;
-use App\Repository\MonsterRepository;
+use App\Entity\Creature;
+use App\Repository\CreatureRepository;
 use Doctrine\ORM\EntityManager;
 
 class CreateBattle
@@ -18,14 +19,14 @@ class CreateBattle
     private $em;
 
     /**
-     * @var MonsterRepository
+     * @var CreatureRepository
      */
-    private $monsterRepository;
+    private $creatureRepository;
 
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->monsterRepository = $em->getRepository(Monster::class);
+        $this->creatureRepository = $em->getRepository(Creature::class);
     }
 
     public function run(Campaign $campaign)
@@ -37,7 +38,7 @@ class CreateBattle
         $this->em->persist($battle);
         $this->em->flush($battle);
 
-        $prepareStage = new PrepareStage($this->monsterRepository);
+        $prepareStage = new PrepareStage($this->creatureRepository);
         $enemies = $prepareStage->getRandomEnemies();
 
         $battleEnemies = [];
@@ -56,8 +57,26 @@ class CreateBattle
             $battleEnemies[] = $battleEnemy;
         }
 
+        $champions = $prepareStage->getRandomChampions();
+        $battleChampions = [];
+
+        foreach ($champions as $champion) {
+            $battleChampion = new BattleChampion();
+            $battleChampion->setChampion($champion);
+            $battleChampion->setMaxHealth($champion->getHealth());
+            $battleChampion->setHealth($champion->getHealth());
+            $battleChampion->setAttack($champion->getAttack());
+            $battleChampion->setDefense($champion->getDefense());
+
+            $this->em->persist($battleChampion);
+            $this->em->flush($battleChampion);
+
+            $battleChampions[] = $battleChampion;
+        }
+
         return [
-            'enemies' => $prepareStage->prepareResponse($battleEnemies)
+            'enemies' => $prepareStage->prepareResponse($battleEnemies),
+            'champions' => $prepareStage->prepareResponse($battleChampions),
         ];
     }
 }

@@ -2,44 +2,67 @@
 
 namespace App\Core\Stage;
 
-use App\Repository\MonsterRepository;
+use App\Entity\BattleChampion;
+use App\Entity\BattleEnemy;
+use App\Entity\Creature;
+use App\Repository\CreatureRepository;
 
 class PrepareStage
 {
-    /** @var MonsterRepository */
-    private $monsterRepo;
+    /** @var CreatureRepository */
+    private $creatureRepository;
 
-    public function __construct(MonsterRepository $monsterRepo)
+    public function __construct(CreatureRepository $creatureRepository)
     {
-        $this->monsterRepo = $monsterRepo;
+        $this->creatureRepository = $creatureRepository;
     }
 
     /**
-     * @return \App\Entity\Monster[]|array
+     * @return \App\Entity\Creature[]|array
      */
     public function getRandomEnemies()
     {
-        $monsters = $this->monsterRepo->findAll();
+        $monsters = $this->creatureRepository->findBy(['type' => Creature::TYPE_MONSTER]);
         shuffle($monsters);
         $monsters = array_slice($monsters, 0, 3);
 
         return $monsters;
     }
 
-    public function prepareResponse($battleEnemies = [])
+    /**
+     * @return \App\Entity\Creature[]|array
+     */
+    public function getRandomChampions()
+    {
+        $champions = $this->creatureRepository->findBy(['type' => Creature::TYPE_CHAMPION]);
+        shuffle($champions);
+        $champions = array_slice($champions, 0, 3);
+
+        return $champions;
+    }
+
+    public function prepareResponse($battleCreatures = [])
     {
         $enemies = [];
 
-        foreach ($battleEnemies as $i => $battleEnemy) {
-            $monster = $battleEnemy->getMonster();
+        foreach ($battleCreatures as $i => $battleCreature) {
+            $creature = null;
+
+            if ($battleCreature instanceof  BattleEnemy) {
+                $creature = $battleCreature->getMonster();
+            }
+
+            if ($battleCreature instanceof  BattleChampion) {
+                $creature = $battleCreature->getChampion();
+            }
 
             $enemies[] = [
-                'id' => $battleEnemy->getId(),
+                'id' => $battleCreature->getId(),
                 'slot' =>  $i + 1,
-                'health' => $battleEnemy->getHealth(),
-                'sprite' => $monster->getSpritePath(),
-                'attack' => $battleEnemy->getAttack(),
-                'defense' => $battleEnemy->getDefense()
+                'health' => $battleCreature->getHealth(),
+                'sprite' => $creature->getSpriteName(),
+                'attack' => $battleCreature->getAttack(),
+                'defense' => $battleCreature->getDefense()
             ];
         }
 

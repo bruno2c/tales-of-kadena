@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Core\Stage\PrepareStage;
-use App\Entity\Monster;
+use App\Entity\Creature;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

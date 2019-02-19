@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export const setStage = (enemies) => ({
+export const setStage = (battle) => ({
     type: 'SET_STAGE',
-    enemies
+    battle
 })
 
 export const setGame = (game) => ({
@@ -39,6 +39,6 @@ export function loadStage() {
         let battle = await newBattle(campaign.id);
 
         dispatch(setGame(campaign))
-        dispatch(setStage(battle.enemies))
+        dispatch(setStage(battle))
     }
 }

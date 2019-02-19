@@ -5,10 +5,13 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MonsterRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CreatureRepository")
  */
-class Monster
+class Creature
 {
+    const TYPE_MONSTER = 'MONSTER';
+    const TYPE_CHAMPION = 'CHAMPION';
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -20,6 +23,11 @@ class Monster
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $type;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -37,9 +45,9 @@ class Monster
     private $health;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="sprite_name")
      */
-    private $sprite_path;
+    private $spriteName;
 
     public function getId(): ?int
     {
@@ -94,15 +102,26 @@ class Monster
         return $this;
     }
 
-    public function getSpritePath(): ?string
+    public function getSpriteName(): ?string
     {
-        return $this->sprite_path;
+        return $this->spriteName;
     }
 
-    public function setSpritePath(?string $sprite_path): self
+    public function setSpriteName(?string $spriteName): self
     {
-        $this->sprite_path = $sprite_path;
+        $this->spriteName = $spriteName;
 
         return $this;
     }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    public function setType($type): void
+    {
+        $this->type = $type;
+    }
+
 }

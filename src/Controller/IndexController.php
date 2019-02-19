@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Monster;
+use App\Entity\Creature;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -10,7 +10,7 @@ class IndexController extends AbstractController
 {
     public function index()
     {
-        $enemies = $this->getDoctrine()->getRepository(Monster::class)->findAll();
+        $enemies = $this->getDoctrine()->getRepository(Creature::class)->findAll();
         shuffle($enemies);
         $enemies = array_slice($enemies, 0, 3);
 

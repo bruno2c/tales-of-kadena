@@ -10,10 +10,10 @@ use Doctrine\ORM\Mapping\PreUpdate;
 use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\BattleEnemyRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\BattleChampionRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class BattleEnemy
+class BattleChampion
 {
     /**
      * @ORM\Id()
@@ -30,9 +30,9 @@ class BattleEnemy
 
     /**
      * @ManyToOne(targetEntity="Creature", cascade={"all"}, fetch="EAGER")
-     * @JoinColumn(name="monster_id", referencedColumnName="id")
+     * @JoinColumn(name="champion_id", referencedColumnName="id")
      */
-    private $monster;
+    private $champion;
 
     /**
      * @ORM\Column(type="integer", nullable=true, name="max_health")
@@ -105,14 +105,14 @@ class BattleEnemy
         return $this;
     }
 
-    public function getMonster(): ?Creature
+    public function getChampion(): ?Creature
     {
-        return $this->monster;
+        return $this->champion;
     }
 
-    public function setMonster(Creature $monster): self
+    public function setChampion(Creature $champion): self
     {
-        $this->monster = $monster;
+        $this->champion = $champion;
 
         return $this;
     }
