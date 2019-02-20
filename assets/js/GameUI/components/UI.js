@@ -1,4 +1,5 @@
 import React from 'react'
+import { UI_GENERAL_BATTLE, UI_OPTION_DOWN, UI_OPTION_UP } from '../constants/UIConstants'
 
 class UI extends React.Component {
 
@@ -10,27 +11,29 @@ class UI extends React.Component {
     handleKeyUp(event) {
 
         if (event.keyCode === 38) {
-            if (!this.props.lockGeneralAction) {
-                this.props.changeOption(this.props.generalAction, 'up');
-            }
+            this.props.changeOption({
+                currentLevel: this.props.currentLevel,
+                currentLevel1Action: this.props.currentLevel1Action,
+                currentLevel2Action: this.props.currentLevel2Action,
+                direction: UI_OPTION_UP
+            });
         }
 
         if (event.keyCode === 40) {
-            if (!this.props.lockGeneralAction) {
-                this.props.changeOption(this.props.generalAction,'down');
-            }
+            this.props.changeOption({
+                currentLevel: this.props.currentLevel,
+                currentLevel1Action: this.props.currentLevel1Action,
+                currentLevel2Action: this.props.currentLevel2Action,
+                direction: UI_OPTION_DOWN
+            });
         }
 
         if (event.keyCode === 13) {
-            if (!this.props.lockGeneralAction) {
-                this.props.lockGeneral();
-            }
+            this.props.changeLevel(this.props.currentLevel + 1);
         }
 
         if (event.keyCode === 27) {
-            if (this.props.lockGeneralAction) {
-                this.props.unlockGeneral();
-            }
+            this.props.changeLevel(this.props.currentLevel - 1);
         }
     };
 
@@ -82,14 +85,14 @@ class UI extends React.Component {
 
                 <div className={"actions"}>
                     <div className={"general"}>
-                        <i className={"arrow-option " + this.props.generalAction}></i>
+                        <i className={"arrow-option " + this.props.currentLevel1Action}></i>
                         <div className={"option"}>Battle</div>
                         <div className={"option"}>Items</div>
                         <div className={"option"}>Run</div>
                     </div>
-                    { (this.props.lockGeneralAction && this.props.generalAction == 'battle') ?
+                    { (this.props.currentLevel === 2 && this.props.currentLevel1Action === UI_GENERAL_BATTLE) ?
                         <div className={"battle-actions"}>
-                            <i className={"arrow-option " + this.props.generalAction}></i>
+                            <i className={"arrow-option " + this.props.currentLevel2Action}></i>
                             <div className={"option"}>Attack</div>
                             <div className={"option"}>Defend</div>
                         </div>

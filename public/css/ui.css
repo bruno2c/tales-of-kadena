@@ -137,13 +137,21 @@
 .ui-bar .actions .battle-actions {
     float: left;
     width: 60%;
-    font-size: 20px;
+    font-size: 25px;
     margin-top: 15px;
     height: 175px;
 }
 
 .ui-bar .actions .battle-actions .option {
-    margin: 15px 0 0 40px;
+    margin: 15px 0 0 60px;
+}
+
+.ui-bar .actions .battle-actions .attack {
+    margin-top: 5px!important;
+}
+
+.ui-bar .actions .battle-actions .defense {
+    margin-top: 42px!important;
 }
 
 .arrow-option {

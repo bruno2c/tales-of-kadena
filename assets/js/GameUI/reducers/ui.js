@@ -1,31 +1,27 @@
+import { UI_GENERAL_BATTLE, UI_BATTLE_ATTACK } from '../constants/UIConstants'
 
 const initialState = {
-    generalAction: 'battle',
-    lockGeneralAction: false,
-    battleAction: 'attack',
+    currentLevel: 1,
+    currentLevel1Action: UI_GENERAL_BATTLE,
+    currentLevel2Action: UI_BATTLE_ATTACK
 }
 
 export default function game(state = initialState, action) {
     switch (action.type) {
-        case 'SET_GENERAL_OPTION':
+        case 'CHANGE_LEVEL':
             return {
                 ...state,
-                generalAction: action.option
+                currentLevel: action.level
             }
-        case 'LOCK_GENERAL_OPTION':
+        case 'CHANGE_LEVEL_1_ACTION':
             return {
                 ...state,
-                lockGeneralAction: true
+                currentLevel1Action: action.action
             }
-        case 'UNLOCK_GENERAL_OPTION':
+        case 'CHANGE_LEVEL_2_ACTION':
             return {
                 ...state,
-                lockGeneralAction: false
-            }
-        case 'SET_BATTLE_OPTION':
-            return {
-                ...state,
-                battleAction: action.option
+                currentLevel2Action: action.action
             }
         default:
             return state
