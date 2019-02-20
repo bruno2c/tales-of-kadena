@@ -7,12 +7,15 @@ const mapStateToProps = (state, ownProps) => {
         currentLevel: state.ui.currentLevel,
         currentLevel1Action: state.ui.currentLevel1Action,
         currentLevel2Action: state.ui.currentLevel2Action,
+        currentLevel3Action: state.ui.currentLevel3Action,
+        currentLevel4Action: state.ui.currentLevel4Action,
+        arena: state.arena
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        changeOption: ({ currentLevel, currentLevel1Action, currentLevel2Action, direction }) => dispatch(changeOption({ currentLevel, currentLevel1Action, currentLevel2Action, direction })),
+        changeOption: (direction) => dispatch(changeOption(direction)),
         changeLevel: (level) => dispatch(changeLevel(level)),
     }
 }

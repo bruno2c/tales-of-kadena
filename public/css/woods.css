@@ -11,5 +11,16 @@ body { margin: 0; font-family: Grobold, Fallback, sans-serif; }
     margin: 0;
     min-height: 950px;
     max-height: 1080px;
+}
+
+.stage::after {
+    content: "";
     background: url("../images/woods/background.png") no-repeat;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }

@@ -75,7 +75,9 @@ class CreateBattle
         }
 
         return [
+            'qtyEnemies' => count($battleEnemies),
             'enemies' => $prepareStage->prepareResponse($battleEnemies),
+            'qtyChampions' => count($battleChampions),
             'champions' => $prepareStage->prepareResponse($battleChampions),
         ];
     }

@@ -22,9 +22,11 @@ class PrepareStage
      */
     public function getRandomEnemies()
     {
+        $qty = rand(1, 3);
+
         $monsters = $this->creatureRepository->findBy(['type' => Creature::TYPE_MONSTER]);
         shuffle($monsters);
-        $monsters = array_slice($monsters, 0, 3);
+        $monsters = array_slice($monsters, 0, $qty);
 
         return $monsters;
     }
@@ -34,9 +36,11 @@ class PrepareStage
      */
     public function getRandomChampions()
     {
+        $qty = rand(1, 3);
+
         $champions = $this->creatureRepository->findBy(['type' => Creature::TYPE_CHAMPION]);
         shuffle($champions);
-        $champions = array_slice($champions, 0, 3);
+        $champions = array_slice($champions, 0, $qty);
 
         return $champions;
     }
@@ -56,10 +60,15 @@ class PrepareStage
                 $creature = $battleCreature->getChampion();
             }
 
+            $healthPercentage = round(($battleCreature->getHealth() / $battleCreature->getMaxHealth()) * 100);
+
             $enemies[] = [
                 'id' => $battleCreature->getId(),
+                'name' => $creature->getName(),
                 'slot' =>  $i + 1,
+                'maxHealth' => $battleCreature->getMaxHealth(),
                 'health' => $battleCreature->getHealth(),
+                'healthPercentage' => $healthPercentage,
                 'sprite' => $creature->getSpriteName(),
                 'attack' => $battleCreature->getAttack(),
                 'defense' => $battleCreature->getDefense()
