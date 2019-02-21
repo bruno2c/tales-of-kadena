@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Interfaces\BattleCharacterInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
@@ -13,7 +14,7 @@ use Doctrine\ORM\Mapping\JoinColumn;
  * @ORM\Entity(repositoryClass="App\Repository\BattleEnemyRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class BattleEnemy
+class BattleEnemy implements BattleCharacterInterface
 {
     /**
      * @ORM\Id()
@@ -53,6 +54,11 @@ class BattleEnemy
      * @ORM\Column(type="integer", nullable=true)
      */
     private $defense;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true, name="last_turn")
+     */
+    private $lastTurn;
 
     /**
      * @ORM\Column(type="datetime", nullable=true, name="created_at")
@@ -185,5 +191,21 @@ class BattleEnemy
         }
 
         $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function isLastTurn()
+    {
+        return $this->lastTurn;
+    }
+
+    /**
+     * @param mixed $lastTurn
+     */
+    public function setLastTurn($lastTurn): void
+    {
+        $this->lastTurn = $lastTurn;
     }
 }

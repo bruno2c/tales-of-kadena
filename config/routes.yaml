@@ -10,6 +10,14 @@ battle_new:
     path: /campaign/{campaignId}/battle/new
     controller: App\Controller\GameController::newBattle
 
+battle_next_turn:
+    path: /battle/{battleId}/nextTurn
+    controller: App\Controller\BattleController::nextTurn
+
+battle_attack:
+    path: /battle/{battleId}/attack/{targetCharId}
+    controller: App\Controller\BattleController::attack
+
 stage_enemies:
     path: /stage/{stageId}/enemies
     controller: App\Controller\StageController::enemies

@@ -45,6 +45,7 @@ class CreateBattle
 
         foreach ($enemies as $monster) {
             $battleEnemy = new BattleEnemy();
+            $battleEnemy->setBattle($battle);
             $battleEnemy->setMonster($monster);
             $battleEnemy->setMaxHealth($monster->getHealth());
             $battleEnemy->setHealth($monster->getHealth());
@@ -62,6 +63,7 @@ class CreateBattle
 
         foreach ($champions as $champion) {
             $battleChampion = new BattleChampion();
+            $battleChampion->setBattle($battle);
             $battleChampion->setChampion($champion);
             $battleChampion->setMaxHealth($champion->getHealth());
             $battleChampion->setHealth($champion->getHealth());
