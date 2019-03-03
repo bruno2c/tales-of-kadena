@@ -56,6 +56,11 @@ class BattleChampion implements BattleCharacterInterface
     private $defense;
 
     /**
+     * @ORM\Column(type="string", nullable=true, name="slot")
+     */
+    private $slot;
+
+    /**
      * @ORM\Column(type="boolean", nullable=true, name="last_turn")
      */
     private $lastTurn;
@@ -169,6 +174,22 @@ class BattleChampion implements BattleCharacterInterface
         $this->defense = $defense;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlot()
+    {
+        return $this->slot;
+    }
+
+    /**
+     * @param mixed $slot
+     */
+    public function setSlot($slot): void
+    {
+        $this->slot = $slot;
     }
 
     /**

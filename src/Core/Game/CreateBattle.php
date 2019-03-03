@@ -2,6 +2,7 @@
 
 namespace App\Core\Game;
 
+use App\Core\Battle\BattleResponse;
 use App\Core\Stage\PrepareStage;
 use App\Entity\Battle;
 use App\Entity\BattleChampion;
@@ -43,7 +44,9 @@ class CreateBattle
 
         $battleEnemies = [];
 
-        foreach ($enemies as $monster) {
+        foreach ($enemies as $key => $monster) {
+            $slot = constant('App\Entity\Battle::BATTLE_SLOT_' . ($key+1));
+
             $battleEnemy = new BattleEnemy();
             $battleEnemy->setBattle($battle);
             $battleEnemy->setMonster($monster);
@@ -51,6 +54,7 @@ class CreateBattle
             $battleEnemy->setHealth($monster->getHealth());
             $battleEnemy->setAttack($monster->getAttack());
             $battleEnemy->setDefense($monster->getDefense());
+            $battleEnemy->setSlot($slot);
 
             $this->em->persist($battleEnemy);
             $this->em->flush($battleEnemy);
@@ -61,7 +65,9 @@ class CreateBattle
         $champions = $prepareStage->getRandomChampions();
         $battleChampions = [];
 
-        foreach ($champions as $champion) {
+        foreach ($champions as $key => $champion) {
+            $slot = constant('App\Entity\Battle::BATTLE_SLOT_' . ($key+1));
+
             $battleChampion = new BattleChampion();
             $battleChampion->setBattle($battle);
             $battleChampion->setChampion($champion);
@@ -69,6 +75,7 @@ class CreateBattle
             $battleChampion->setHealth($champion->getHealth());
             $battleChampion->setAttack($champion->getAttack());
             $battleChampion->setDefense($champion->getDefense());
+            $battleChampion->setSlot($slot);
 
             $this->em->persist($battleChampion);
             $this->em->flush($battleChampion);
@@ -76,11 +83,6 @@ class CreateBattle
             $battleChampions[] = $battleChampion;
         }
 
-        return [
-            'qtyEnemies' => count($battleEnemies),
-            'enemies' => $prepareStage->prepareResponse($battleEnemies),
-            'qtyChampions' => count($battleChampions),
-            'champions' => $prepareStage->prepareResponse($battleChampions),
-        ];
+        return $battle;
     }
 }

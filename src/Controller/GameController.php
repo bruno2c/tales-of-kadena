@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Core\Battle\BattleResponse;
 use App\Core\Game\CreateBattle;
 use App\Core\Game\CreateCampaign;
 use App\Entity\Campaign;
@@ -36,12 +37,14 @@ class GameController extends AbstractController
                 throw new \Exception('Invalid request, campaign not found');
             }
 
+            $battleResponse = new BattleResponse($em);
+
             $createCampaign = new CreateBattle($em);
             $battle = $createCampaign->run($campaign);
 
             $response = [
                 'code' => Response::HTTP_OK,
-                'battle' => $battle
+                'battle' => $battleResponse->prepareResponse($battle)
             ];
         } catch (\Exception $e) {
             $response = [

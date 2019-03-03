@@ -15,6 +15,10 @@ use Doctrine\ORM\Mapping\JoinColumn;
  */
 class Battle
 {
+    const BATTLE_SLOT_1 = 'slot1';
+    const BATTLE_SLOT_2 = 'slot2';
+    const BATTLE_SLOT_3 = 'slot3';
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

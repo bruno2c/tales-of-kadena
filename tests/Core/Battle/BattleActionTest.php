@@ -22,7 +22,8 @@ class BattleActionTest extends TestCase
         $battleAction = new BattleAction();
         $battleAction->setTurnCharacter($battleChampion);
         $battleAction->setTargetCharacter($battleEnemy);
-        $battleAction->attack();
+        $battleAction->setAction(BattleAction::ACTION_ATTACK);
+        $battleAction->execute();
 
         $report = $battleAction->getReport();
 
@@ -40,7 +41,8 @@ class BattleActionTest extends TestCase
 
         $battleAction = new BattleAction();
         $battleAction->setTurnCharacter($battleChampion);
-        $battleAction->defend();
+        $battleAction->setAction(BattleAction::ACTION_DEFEND);
+        $battleAction->execute();
 
         $report = $battleAction->getReport();
 

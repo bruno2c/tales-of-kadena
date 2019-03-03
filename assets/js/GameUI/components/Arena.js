@@ -1,22 +1,38 @@
 import React from 'react'
 import EnemyContainer from "../containers/EnemyContainer";
 import ChampionContainer from "../containers/ChampionContainer";
+import {UI_SIDE_ENEMIES} from "../constants/UIConstants";
 
-const Arena = ({ arena }) => (
-    <div className={"arena"}>
+class Arena  extends React.Component {
 
-        <div className={"champions-side"}>
-            {Object.keys(arena.champions).map(key => (
-                <ChampionContainer key={key} champion={arena.champions[key]} />
-            ))}
-        </div>
+    constructor(props) {
+        super(props);
+    }
 
-        <div className={"enemies-side"}>
-            {Object.keys(arena.enemies).map(key => (
-                <EnemyContainer key={key} enemy={arena.enemies[key]} />
-            ))}
-        </div>
-    </div>
-)
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.currentSide === UI_SIDE_ENEMIES) {
+            this.props.enemyAct();
+        }
+    }
+
+    render() {
+        return (
+            <div className={"arena"}>
+
+                <div className={"champions-side"}>
+                    {Object.keys(this.props.arena.champions).map(key => (
+                        <ChampionContainer key={key} champion={this.props.arena.champions[key]}/>
+                    ))}
+                </div>
+
+                <div className={"enemies-side"}>
+                    {Object.keys(this.props.arena.enemies).map(key => (
+                        <EnemyContainer key={key} enemy={this.props.arena.enemies[key]}/>
+                    ))}
+                </div>
+            </div>
+        )
+    }
+}
 
 export default Arena

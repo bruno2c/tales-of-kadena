@@ -44,37 +44,4 @@ class PrepareStage
 
         return $champions;
     }
-
-    public function prepareResponse($battleCreatures = [])
-    {
-        $enemies = [];
-
-        foreach ($battleCreatures as $i => $battleCreature) {
-            $creature = null;
-
-            if ($battleCreature instanceof  BattleEnemy) {
-                $creature = $battleCreature->getMonster();
-            }
-
-            if ($battleCreature instanceof  BattleChampion) {
-                $creature = $battleCreature->getChampion();
-            }
-
-            $healthPercentage = round(($battleCreature->getHealth() / $battleCreature->getMaxHealth()) * 100);
-
-            $enemies[] = [
-                'id' => $battleCreature->getId(),
-                'name' => $creature->getName(),
-                'slot' =>  $i + 1,
-                'maxHealth' => $battleCreature->getMaxHealth(),
-                'health' => $battleCreature->getHealth(),
-                'healthPercentage' => $healthPercentage,
-                'sprite' => $creature->getSpriteName(),
-                'attack' => $battleCreature->getAttack(),
-                'defense' => $battleCreature->getDefense()
-            ];
-        }
-
-        return $enemies;
-    }
 }

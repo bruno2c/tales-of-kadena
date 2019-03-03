@@ -1,5 +1,11 @@
 import React from 'react'
-import { UI_LEVEL_2_BATTLE, UI_OPTION_DOWN, UI_OPTION_UP } from '../constants/UIConstants'
+import {
+    UI_LEVEL_2_BATTLE,
+    UI_OPTION_DOWN,
+    UI_OPTION_UP,
+    UI_SIDE_CHAMPIONS,
+    UI_SIDE_ENEMIES
+} from '../constants/UIConstants'
 import ChampionContainer from "./Arena";
 
 class UI extends React.Component {
@@ -31,6 +37,7 @@ class UI extends React.Component {
     componentDidMount(){
         document.addEventListener("keydown", this.handleKeyUp, false);
     }
+
     componentWillUnmount(){
         document.removeEventListener("keydown", this.handleKeyUp, false);
     }
@@ -39,7 +46,10 @@ class UI extends React.Component {
         return (
             <div className={"ui-bar"}>
                 <div className={"champions"}>
-                    <i className={"arrow-option " + this.props.currentLevel1Action}></i>
+                    {(this.props.currentSide == UI_SIDE_CHAMPIONS) ?
+                        <i className={"arrow-option " + this.props.currentLevel1Action}></i>
+                        : ''
+                    }
 
                     {Object.keys(this.props.arena.champions).map(key => (
                         <div className={"slot"} key={key}>
@@ -83,7 +93,7 @@ class UI extends React.Component {
                 </div>
 
                 <div className={"enemies"}>
-                    {(this.props.currentLevel === 4) ?
+                    {(this.props.currentLevel === 4) || (this.props.currentSide === UI_SIDE_ENEMIES) ?
                         <i className={"arrow-option " + this.props.currentLevel4Action}></i>
                         : ''
                     }

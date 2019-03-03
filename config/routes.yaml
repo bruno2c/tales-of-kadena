@@ -15,8 +15,12 @@ battle_next_turn:
     controller: App\Controller\BattleController::nextTurn
 
 battle_attack:
-    path: /battle/{battleId}/attack/{targetCharId}
+    path: /battle/{battleId}/attack
     controller: App\Controller\BattleController::attack
+
+battle_enemy_act:
+    path: /battle/{battleId}/enemy/act
+    controller: App\Controller\BattleController::enemyAct
 
 stage_enemies:
     path: /stage/{stageId}/enemies

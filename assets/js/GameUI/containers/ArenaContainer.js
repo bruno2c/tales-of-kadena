@@ -1,17 +1,19 @@
 import { connect } from 'react-redux'
-import {loadStage} from '../actions/arena'
+import { loadStage, enemyAct } from '../actions/arena'
 import Arena from '../components/Arena'
 
 const mapStateToProps = (state, ownProps) => {
 
     return {
-        arena: state.arena
+        arena: state.arena,
+        currentSide: state.ui.currentSide,
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        loadStage: dispatch(loadStage())
+        loadStage: dispatch(loadStage()),
+        enemyAct: () => dispatch(enemyAct())
     }
 }
 

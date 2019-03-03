@@ -1,5 +1,6 @@
 
 const initialState = {
+    hash: null,
     enemies: {},
     champions: {}
 }
@@ -9,6 +10,7 @@ export default function arena(state = initialState, action) {
         case 'SET_STAGE':
             return {
                 ...state,
+                hash: action.battle.hash,
                 enemies: Object.assign({}, action.battle.enemies),
                 champions: Object.assign({}, action.battle.champions),
             }

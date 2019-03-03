@@ -12,6 +12,11 @@ class BattleAction
     const ACTION_ATTACK = 'ATTACK';
     const ACTION_DEFEND = 'DEFEND';
 
+    public static $actions = [
+        self::ACTION_ATTACK,
+        self::ACTION_DEFEND
+    ];
+
     /**
      * @var BattleCharacterInterface
      */
@@ -21,6 +26,8 @@ class BattleAction
      * @var BattleCharacterInterface
      */
     private $targetCharacter;
+
+    private $action;
 
     private $report;
 
@@ -56,7 +63,29 @@ class BattleAction
         $this->targetCharacter = $targetCharacter;
     }
 
-    public function attack()
+    public function setAction($action)
+    {
+        $this->action = $action;
+    }
+
+    public function execute()
+    {
+        if (!$this->action || !in_array($this->action, self::$actions)) {
+            throw new \Exception('Invalid action provided');
+        }
+
+        switch ($this->action) {
+            case self::ACTION_ATTACK:
+                $this->attack();
+
+                break;
+            case self::ACTION_DEFEND:
+                $this->defend();
+                break;
+        }
+    }
+
+    private function attack()
     {
         $turnChar = $this->getTurnCharacter();
         $targetChar = $this->getTargetCharacter();
@@ -87,7 +116,7 @@ class BattleAction
         ];
     }
 
-    public function defend()
+    private function defend()
     {
         $turnChar = $this->getTurnCharacter();
 

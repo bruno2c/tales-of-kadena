@@ -9,15 +9,6 @@ import {
 } from '../constants/UIConstants'
 
 export const changeLevel = (level) => {
-
-    if (level < 1) {
-        level = 1;
-    }
-
-    if (level > 4) {
-        level = 4;
-    }
-
     return {
         type: 'CHANGE_LEVEL',
         level
